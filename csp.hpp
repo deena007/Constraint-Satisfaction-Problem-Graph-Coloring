@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <vector>
 #include <list>
+#include <fstream>
 
 using namespace std;
 
@@ -73,7 +74,8 @@ csp::csp(int n)
 }
 void csp::print_assignment()
 {
-	
+	ofstream file;
+	file.open("assignment.txt");
 	int i,n=no_nodes;
 	for(i=0;i<n;i++)
 	{
@@ -95,20 +97,26 @@ void csp::print_assignment()
 		{
 			cout << i << ": ERROR" << endl;
 		}
-		
+		file<<assignment[i]<<" ";
 	}
+	file.close();
 }
 void csp::print_adjacency_matrix()
 {
+	ofstream file;
+	file.open("matrix.txt");
 	int i,j,n=no_nodes;
 	for(i=0;i<n;i++)
 	{
 		for (j = 0; j < n; j++)
 		{
 			cout << adjacency_matrix[i][j] << " ";
+			file<<adjacency_matrix[i][j]<<" ";
 		}
 		cout << endl;
+		file<<"\n";
 	}
+	file.close();
 }
 void csp::print_adjacent()
 {
